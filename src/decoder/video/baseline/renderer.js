@@ -214,6 +214,11 @@ H264bsdCanvas.prototype.drawFrame = function(frame) {
     var gl = this.contextGL;
     var { width, height, data } = frame;
     var croppingParams = null;
+    if (this.canvasElement.width !== width || this.canvasElement.height !== height) {
+        // Keep the canvas at the right size...
+        this.canvasElement.width = width;
+        this.canvasElement.height = height;
+    }
     if(gl) {
         this.drawNextOuptutPictureGL(width, height, croppingParams, new Uint8Array(data));
     } else {

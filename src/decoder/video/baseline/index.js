@@ -35,3 +35,5 @@ export default class VideoDecoder extends VideoSuperDecoder {
         return framesSize;
     }
 }
+
+window.FlvplayerDecoder = VideoDecoder;

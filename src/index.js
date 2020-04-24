@@ -29,13 +29,16 @@ class FlvPlayer extends Emitter {
             this.options.container = document.querySelector(this.options.container);
         }
 
-        if (window.FlvplayerDecoder) {
+        if (window.FlvplayerDecoder) 
             this.init();
-        } else {
-            utils.loadScript(this.options.decoder, 'FlvplayerDecoder').then(() => {
-                this.init();
-            });
-        }
+
+        // if (window.FlvplayerDecoder) {
+        //     this.init();
+        // } else {
+        //     utils.loadScript(this.options.decoder, 'FlvplayerDecoder').then(() => {
+        //         this.init();
+        //     });
+        // }
 
         console.log(
             '%c FlvPlayer.js %c __VERSION__ %c https://flvplayer.js.org',
@@ -57,10 +60,10 @@ class FlvPlayer extends Emitter {
         this.stream = new Stream(this);
 
         utils.proxyPropertys(this, this.player);
-        if (window.FlvplayerControl && this.options.control) {
-            this.control = new window.FlvplayerControl(this);
-            utils.proxyPropertys(this, this.control);
-        }
+        // if (window.FlvplayerControl && this.options.control) {
+        //     this.control = new window.FlvplayerControl(this);
+        //     utils.proxyPropertys(this, this.control);
+        // }
 
         id += 1;
         this.id = id;
@@ -101,7 +104,7 @@ class FlvPlayer extends Emitter {
     static get scheme() {
         return {
             url: 'string|file',
-            container: 'string|htmldivelement',
+            container: 'string|htmlcanvaselement',
             poster: 'string',
             debug: 'boolean',
             live: 'boolean',

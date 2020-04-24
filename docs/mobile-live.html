@@ -29,39 +29,23 @@
 
 <body>
     <div class="container">
-        <div class="flvplayer-app"></div>
+        <canvas id="flv" style="width: 100%;"></canvas>
     </div>
     <script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
-    <script src="./uncompiled/flvplayer-control.js"></script>
+    <script src="./uncompiled/flvplayer-decoder-baseline.js"></script>
     <script src="./uncompiled/flvplayer.js"></script>
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            if (window.location.hostname !== 'localhost') {
-                var hm = document.createElement('script');
-                hm.src = 'https://hm.baidu.com/hm.js?9c575f08973a5bd2275b96a83f1a9f83';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(hm, s);
-            }
-        })();
-
-    </script>
     <script>
         var vConsole = new VConsole();
         if (FlvPlayer.isSupported()) {
             var flv = new FlvPlayer({
-                container: '.flvplayer-app',
-                url: 'http://localhost:7001/demo/demo.flv',
-                decoder: './uncompiled/flvplayer-decoder-baseline.js',
+                // container: '.flvplayer-app',
+                container: document.getElementById('flv'),
+                url: 'http://192.168.199.100:8068/live1/720p.flv',
                 debug: true,
                 live: true,
                 muted: true,
                 autoPlay: true,
-                hasAudio: true,
-                videoChunk: 1024 * 1024,
-                audioChunk: 16 * 1024,
-                width: 960,
-                height: 540,
+                hasAudio: false,
             });
         } else {
             console.warn('Your browser does not support Flvplayer.js');
